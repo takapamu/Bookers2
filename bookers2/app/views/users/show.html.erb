@@ -4,6 +4,8 @@
    <div class="col-md-3">
       <h1>User info</h1>
       
+       <%= attachment_image_tag @user, :profile_image, :fill, 60, 60,  fallback: "no-image.png" %>
+      
       <table class="table">
        <tbody>
         <tr></tr>
@@ -46,7 +48,7 @@
            <thead>
              <tr>
                <th></th>
-               <th>Titlera</th>
+               <th>Titler</th>
                <th>Opinion</th>
                <th colspan="3"></th>
              </tr>

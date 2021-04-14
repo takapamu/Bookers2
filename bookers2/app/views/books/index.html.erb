@@ -4,6 +4,8 @@
   
  <h2>User info</h2>
  
+  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60,  fallback: "no-image.png" %>
+ 
  <table class="table">
    <tbody>
      <tr></tr>
@@ -46,6 +48,7 @@
    </div>
    
    <div class="col-md-8 offset-md">
+     <h2>Books</h2>
   <table class="table">
   <thead>
     <tr>
@@ -56,12 +59,12 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
+      <th scope="row"></th>
       <td>Mark</td>
       <td>Otto</td>
     </tr>
     <tr>
-      <th scope="row">2</th>
+      <th scope="row"></th>
       <td>Jacob</td>
       <td>Thornton</td>
     </tr>
