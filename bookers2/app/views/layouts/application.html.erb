@@ -9,35 +9,59 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Bookers</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<body>
+  <header>
+  　<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Bookers</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-  </button>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li>
-        <a class: "fa fa-book", href="/" >Home</a>
-     </li>
-      <li>
-        <%= link_to "About", homes_about_path %>
-      </li>
-      <li>
-        <%= link_to "sign up", new_user_registration_path %>
-      </li>
-      </li>
-    
-      <li>
-        <%= link_to "login", new_user_session_path %>
-      </li>
-     </ul>
-  </div>
-</nav>
-
-    </header>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+        
+            <li>
+               <%= link_to "Home", root_path, class: "fas fa-home nav-link text-light" %>
+            </li>
+            
+            <li>
+               <%= link_to "User", users_path, class: "fas fa-users nav-link text-light" %>
+            </li>
+            
+            <li>
+              <%= link_to "Books", books_path, class: "fas fa-book-open nav-link text-light" %>
+            </li>
+            
+             <li>
+                <%= link_to "logout", destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt nav-link text-light" %>
+            </li>
+           
+          <% else %>
+          
+            <li>
+               <%= link_to "Home", root_path, class: "fas fa-home nav-link text-light" %>
+            </li>
+            
+            <li>
+                <%= link_to "About", homes_about_path, class: "fas fa-link nav-link text-light" %>
+            </li>
+             
+            <li>
+                <%= link_to "sign up", new_user_registration_path, class: "fas fa-user-plus nav-link text-light" %>
+            </li>
+             
+            <li>
+                <%= link_to "login", user_session_path, class: "fas fa-sign-in-alt nav-link text-light" %>
+            </li>
+             
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
   
   <%= yield %>
        
