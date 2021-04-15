@@ -7,10 +7,10 @@ def index
 end
 
 def show
-    @book = Book.find(params[:id])
+    @user = User.find(params[:id])
 end
 
 def edit
-end 
+end
 
 end
