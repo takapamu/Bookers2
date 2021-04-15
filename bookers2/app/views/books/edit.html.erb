@@ -6,15 +6,16 @@
        <%= form_for(@book)  do |f| %>
       <form>
         <div class="form-group">
-          <label for="user_name">Title</label>
-          <input type="text" class="form-control" id="user_name" name="user[name]">
+          <h4>Title</h4>
+        <%= f.text_field :title,class:"col-xs-12" %>
         </div>
     
         <div class="form-group">
-          <label for="user_introduction">Opinion</label>
-          <textarea class="form-control introduction" id="user_introduction" name="user[introduction]">
-          </textarea>
+          <h4>Opinion</h4>
+         <%= f.text_area :body,class:"col-xs-12" %>
         </div>
+        
+        
         <div class="form-group">
           <%= f.submit "Update Book", class: "btn btn-success" %>
         </div>

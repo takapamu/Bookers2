@@ -15,16 +15,34 @@ def index
 end
 
 def show
-   @book = Book.new
+    @book = Book.new
     @user = User.find(params[:id])
     @books = @user.book
 end
 
  def edit
-    @book = Book.find(params[:id])
+       @user = User.find(params[:id])
+    if @book.user == current_user
+       render "edit"
+    else
+      redirect_to books_path
+    end
+ end
+
+ def update
+        @user = User.find(params[:id])
+     if @user.update(user_params)
+        flash[:notice] = "You have updated user successfully."
+
+        redirect_to user_path(@user.id)
+     else
+        flash[:notice] = " errors prohibited this obj from being saved:"
+        render :edit
+
+     end
  end
 
   def book_params
-        params.require(:book).permit(:title,:body)
+         params.require(:book).permit(:title,:body)
   end
 end
