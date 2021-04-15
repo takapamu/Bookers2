@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>User info</h2>
-      
+       <%= form_for(@book)  do |f| %>
       <form>
         <div class="form-group">
           <label for="user_name">Name</label>
@@ -26,8 +26,8 @@
         <input type="submit" class="btn btn-secondary" name="commit" value="UpdateUser" data-disable-with="Update User">
         
         </div>
-        
       </form>
+      <% end %>
     </div>
   </div>
 </div>
