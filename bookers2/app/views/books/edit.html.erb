@@ -14,7 +14,7 @@
     
     
       <h2>Editing Book</h2>
-       <%= form_for(@book)  do |f| %>
+      <%= form_for(@book, url: book_path(@book.id)) do |f| %>
       <form>
         <div class="form-group">
           <h4>Title</h4>

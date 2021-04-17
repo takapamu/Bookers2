@@ -14,6 +14,7 @@
       </tr>
       <tr>
         <th>introduction</th>
+           <%= @user.introduction %>
       </tr>
     </tbody>
   </table>
@@ -25,7 +26,7 @@
 
   <%= form_for(@book,  url: books_path) do |f| %>
   <h2>New book</h2>
- 
+
 
 
     <div class="form-group">
