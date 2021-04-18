@@ -25,18 +25,16 @@ end
   end
  end
 
- def update
-     @user = User.find(params[:id])
-   if  @user.update(user_params)
-     flash[:notice] = "You have updated user successfully."
-      redirect_to user_path(@user.id)
 
-   else
-      flash[:notice] = " errors prohibited this obj from being saved:"
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice]="You have updated user successfully."
+      redirect_to user_path(current_user)
+    else
       render :edit
-
-   end
- end
+    end
+  end
 
   def book_params
        params.require(:book).permit(:title,:body)
