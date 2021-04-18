@@ -3,16 +3,16 @@ class BooksController < ApplicationController
      before_action :authenticate_user!
 
 	def create
-	    @user = current_user
-      @book = Book.new(book_params)
-      @book.user_id = (current_user.id)
-    if @book.save
+      @new_book = Book.new(book_params)
+      @new_book.user_id = current_user.id
+    if @new_book.save
       flash[:notice] = "You have creatad book successfully."
-    redirect_to book_path(@book.id)
+    redirect_to book_path(@new_book.id)
     else
+      @user = current_user
       @books = Book.all
       flash[:notice] = ' errors prohibited this obj from being saved:'
-      render action: :index
+      render "index"
     end
 	end
 
@@ -24,6 +24,7 @@ class BooksController < ApplicationController
 
   def show
        @book = Book.find(params[:id])
+       @new_book = Book.new
        @user = @book.user
   end
 
@@ -45,7 +46,7 @@ class BooksController < ApplicationController
     else
        @books = Book.all
        flash[:notice]= ' errors prohibited this obj from being saved:'
-       render action: :edit
+       render "edit"
     end
   end
 
@@ -62,8 +63,10 @@ private
         params.require(:book).permit(:title,:body)
   end
 
-  def user_params
-        params.require(:user).permit(:name,:profile_image,:introduction)
+  def list
+    @new_book = Book.new
   end
-  
+
+
+
 end
